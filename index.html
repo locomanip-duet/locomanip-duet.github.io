@@ -18,6 +18,10 @@
     <link rel="stylesheet" href="./static/css/index.css">
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
 
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script defer src="./static/js/fontawesome.all.min.js"></script>
     <script src="./static/js/bulma-carousel.min.js"></script>
@@ -212,17 +216,25 @@
                     <h2 class="title is-2">Method</h2>
                     <div class="content has-text-justified">
                         <p>
-                            Cooperative policy for whole-body control.
+                            
+                            <b>Cooperative policy for whole-body control.</b> RoboDuet consists of a loco policy for locomotion and an
+                            arm policy for manipulation. The two policies are harmonized
+                            as a whole-body controller. Specifically, the loco policy
+                            adjusts its actions accordingly by following instructions from
+                            the arm policy. The goal of the loco policy \( \pi_{loco} \) is to follow a
+                            target command \(\mathbf{c_t} \). The goal of the arm policy \( \pi_{arm} \) is to accurately track the 6-DoF pose. The actions of the arm policy consist of two parts: the first six actions \(a^{arm^J}_t \in \mathbb{R}^6\) represent the target joint position offsets corresponding to six arm joint actuators. The rest part of the arm policy \( a_t^{arm^G} \) is used to replace orientation commands,
+                            providing additional degrees of freedom for end-effector tracking to cooperate with the loco policy.
                         </p>
                         <p>
-                            Two stage training.
+                            <b>Two stage training.</b> In order to achieve both robust locomotion ability and flexible manipulation ability, we adopted a two-stage training strategy. Stage 1 focuses on obtaining the robust locomotion capability, which design is inspired by the powerful blind locomotion algorithm. Stage 2 aims to coordinate locomotion and manipulation to achieve whole-body large-range mobile manipulation, when the arm policy will be activated simultaneously with all the robotic arm joints.
                         </p>
                     </div>
                     <div style="text-align: center;">
                         <figure style="display: inline-block; max-width: 75%;">
                             <img src="resources/framework.png" alt="Pipeline Image" style="max-width: 100%;">
-                            <figcaption>Pipeline of the offline-to-online setting for <span
-                                    style="color: rgb(128, 185, 90); font-weight: bolder;">Uni-O4</span></figcaption>
+                            <figcaption>An overview of 
+                                <span style="color: rgb(18, 150, 219);font-weight: bolder;">Robo</span><span style="color: rgb(255, 111, 82);font-weight: bolder;">Duet</span>
+                            </figcaption>
                         </figure>
                     </div>
                 </div>
@@ -231,7 +243,31 @@
     </section>
 
 
+    <section class="section">
+        <div class="container">
+            <!-- Abstract. -->
+            <div class="columns is-centered has-text-centered">
+                <div class="column has-text-centered " >
+                    <!--       <div class="column is-two-thirds"> -->
+                    <h2 class="title is-2">Experiments</h2>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <h3 class="title is-3">6-DoF End-effector Tracking</h3>
 
+                        <figure style="display: inline-block; max-width: 95%;">
+                            <img src="resources/second.png" alt="Pipeline Image" style="max-width: 100%;">
+                            <figcaption>
+                                <!-- An overview of 
+                                <span style="color: rgb(18, 150, 219);font-weight: bolder;">Robo</span><span style="color: rgb(255, 111, 82);font-weight: bolder;">Duet</span> -->
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 </body>
 
