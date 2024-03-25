@@ -178,3 +178,33 @@ body {
   margin-top: 0.5em;
 }
 
+
+.custom-hr {
+    width: 80%;
+    height: 2px; /* 控制粗细 */
+    background-color: #e7dfdf; /* 控制颜色 */
+    border: none; /* 去掉默认的边框 */
+    margin-top: 30px; /* 上边距 */
+    margin-bottom: 100px; /* 下边距 */
+    margin-left: auto; /* 左边距 */
+    margin-right: auto; /* 右边距 */
+}
+
+.center-table {
+    margin-top: -5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5vh;
+    /* 可根据需要调整居中元素的高度 */
+}
+
+.center-table table {
+    text-align: center;
+    /* 水平居中表格内的内容 */
+}
+
+.center-table table td {
+    vertical-align: middle;
+    /* 垂直居中表格单元格内的内容 */
+}

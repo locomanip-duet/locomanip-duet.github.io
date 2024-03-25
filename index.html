@@ -36,29 +36,8 @@
 
 
 <body>
-    <style>
-        .center-table {
-            margin-top: -5vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 5vh;
-            /* 可根据需要调整居中元素的高度 */
-        }
-
-        .center-table table {
-            text-align: center;
-            /* 水平居中表格内的内容 */
-        }
-
-        .center-table table td {
-            vertical-align: middle;
-            /* 垂直居中表格单元格内的内容 */
-        }
-    </style>
-
     <section class="hero">
-        
+
         <!-- Title -->
         <div class="hero-body">
             <div class="container">
@@ -77,7 +56,7 @@
             </div>
         </div>
         <img src="resources/titlebg.png" alt="" class="no-margin" style="max-width: 100%;">
-        
+
         <!-- Authors -->
         <div class="hero-body">
             <div class="container">
@@ -112,10 +91,12 @@
                                 <br>
 
                                 <div>
-                                    <img src="./resources/thu.png" alt="Tsinghua University Logo" style="vertical-align: middle; width: 60px; height: auto;">
-                                    <span style="color: rgb(124, 43, 136); font-weight: bolder;">Tsinghua University</span>
+                                    <img src="./resources/thu.png" alt="Tsinghua University Logo"
+                                        style="vertical-align: middle; width: 60px; height: auto;">
+                                    <span style="color: rgb(124, 43, 136); font-weight: bolder;">Tsinghua
+                                        University</span>
                                 </div>
-                                
+
 
                                 <!-- <span style="color: rgb(124, 43, 136);font-weight: bolder;">Tsinghua University</span> -->
                                 <span style="font-size: 18px;"><sup>*</sup> Equal conttribution </span>
@@ -137,8 +118,7 @@
     <div class="center-table">
         <span class="link-block">
             <!-- bilibili -->
-            <a href="https://www.bilibili.com/video/xxx/"
-                class="external-link button is-normal is-rounded is-success">
+            <a href="https://www.bilibili.com/video/xxx/" class="external-link button is-normal is-rounded is-success">
                 <span class="icon">
                     <svg style="color: white" xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 512 512"><!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. -->
@@ -178,7 +158,7 @@
                             </path>
                         </svg><!-- <i class="fab fa-github"></i> Font Awesome fontawesome.com -->
                     </span>
-                    <span>Code</span>
+                    <span>Code (coming soon)</span>
                 </a>
             </span>
     </div>
@@ -194,12 +174,24 @@
                     <h2 class="title is-2">Abstract</h2>
                     <div class="content has-text-justified">
                         <p>
-                            Combining the mobility of legged robots with the manipulation skills of arms has the potential to significantly expand the operational range and enhance the capabilities of robotic systems in performing various mobile manipulation tasks.
-                            Existing approaches are confined to imprecise 6-DoF manipulation and possess a limited arm workspace. 
-                            In this paper, we propose a novel framework &mdash; <span style="color: rgb(18, 150, 219);font-weight: bolder;">Robo</span><span
-                            style="color: rgb(255, 111, 82);font-weight: bolder;">Duet</span>, which employs two collaborative policies to realize locomotion and manipulation simultaneously, achieving whole-body control through interactions between each other. 
-                            Surprisingly, going beyond the large-range pose tracking, we find that the <b>two-policy framework</b> may enable <b>cross-embodiment</b> deployment such as using different quadrupedal robots or other arms.
-                            Our experiments demonstrate that the policies trained through <span style="color: rgb(18, 150, 219);font-weight: bolder;">Robo</span><span style="color: rgb(255, 111, 82);font-weight: bolder;">Duet</span> can accomplish stable gaits, agile 6D end-effector pose tracking, and zero-shot exchange of legged robots, and can be deployed in the real world to perform various mobile manipulation tasks. 
+                            Combining the mobility of legged robots with the manipulation skills of arms has the
+                            potential to significantly expand the operational range and enhance the capabilities of
+                            robotic systems in performing various mobile manipulation tasks.
+                            Existing approaches are confined to imprecise 6-DoF manipulation and possess a limited arm
+                            workspace.
+                            In this paper, we propose a novel framework &mdash; <span
+                                style="color: rgb(18, 150, 219);font-weight: bolder;">Robo</span><span
+                                style="color: rgb(255, 111, 82);font-weight: bolder;">Duet</span>, which employs two
+                            collaborative policies to realize locomotion and manipulation simultaneously, achieving
+                            whole-body control through interactions between each other.
+                            Surprisingly, going beyond the large-range pose tracking, we find that the <b>two-policy
+                                framework</b> may enable <b>cross-embodiment</b> deployment such as using different
+                            quadrupedal robots or other arms.
+                            Our experiments demonstrate that the policies trained through <span
+                                style="color: rgb(18, 150, 219);font-weight: bolder;">Robo</span><span
+                                style="color: rgb(255, 111, 82);font-weight: bolder;">Duet</span> can accomplish stable
+                            gaits, agile 6D end-effector pose tracking, and zero-shot exchange of legged robots, and can
+                            be deployed in the real world to perform various mobile manipulation tasks.
                         </p>
                     </div>
                 </div>
@@ -209,8 +201,7 @@
 
     <!-- demo video -->
     <div class="column is-full-width is-centered has-text-centered">
-        <video controls loop muted playsinline src="./resources/video/v3origin.mp4"
-            poster="./resources/video1.png"
+        <video controls loop muted playsinline src="./resources/video/v3origin.mp4" poster="./resources/video1.png"
             style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%; width: 70%">
         </video>
     </div>
@@ -220,29 +211,41 @@
         <div class="container">
             <!-- Abstract. -->
             <div class="columns is-centered has-text-centered">
-                <div class="column has-text-centered " >
+                <div class="column has-text-centered ">
                     <!--       <div class="column is-two-thirds"> -->
                     <h2 class="title is-2">Method</h2>
                     <div class="content has-text-justified">
                         <p>
-                            
-                            <b>Cooperative policy for whole-body control.</b> RoboDuet consists of a loco policy for locomotion and an
+
+                            <b>Cooperative policy for whole-body control.</b> RoboDuet consists of a loco policy for
+                            locomotion and an
                             arm policy for manipulation. The two policies are harmonized
                             as a whole-body controller. Specifically, the loco policy
                             adjusts its actions accordingly by following instructions from
                             the arm policy. The goal of the loco policy \( \pi_{loco} \) is to follow a
-                            target command \(\mathbf{c_t} \). The goal of the arm policy \( \pi_{arm} \) is to accurately track the 6-DoF pose. The actions of the arm policy consist of two parts: the first six actions \(a^{arm^J}_t \in \mathbb{R}^6\) represent the target joint position offsets corresponding to six arm joint actuators. The rest part of the arm policy \( a_t^{arm^G} \) is used to replace orientation commands,
-                            providing additional degrees of freedom for end-effector tracking to cooperate with the loco policy.
+                            target command \(\mathbf{c_t} \). The goal of the arm policy \( \pi_{arm} \) is to
+                            accurately track the 6-DoF pose. The actions of the arm policy consist of two parts: the
+                            first six actions \(a^{arm^J}_t \in \mathbb{R}^6\) represent the target joint position
+                            offsets corresponding to six arm joint actuators. The rest part of the arm policy \(
+                            a_t^{arm^G} \) is used to replace orientation commands,
+                            providing additional degrees of freedom for end-effector tracking to cooperate with the loco
+                            policy.
                         </p>
                         <p>
-                            <b>Two stage training.</b> In order to achieve both robust locomotion ability and flexible manipulation ability, we adopted a two-stage training strategy. Stage 1 focuses on obtaining the robust locomotion capability, which design is inspired by the powerful blind locomotion algorithm. Stage 2 aims to coordinate locomotion and manipulation to achieve whole-body large-range mobile manipulation, when the arm policy will be activated simultaneously with all the robotic arm joints.
+                            <b>Two stage training.</b> In order to achieve both robust locomotion ability and flexible
+                            manipulation ability, we adopted a two-stage training strategy. Stage 1 focuses on obtaining
+                            the robust locomotion capability, which design is inspired by the powerful blind locomotion
+                            algorithm. Stage 2 aims to coordinate locomotion and manipulation to achieve whole-body
+                            large-range mobile manipulation, when the arm policy will be activated simultaneously with
+                            all the robotic arm joints.
                         </p>
                     </div>
                     <div style="text-align: center;">
                         <figure style="display: inline-block; max-width: 75%;">
                             <img src="resources/framework.png" alt="Pipeline Image" style="max-width: 100%;">
-                            <figcaption>An overview of 
-                                <span style="color: rgb(18, 150, 219);font-weight: bolder;">Robo</span><span style="color: rgb(255, 111, 82);font-weight: bolder;">Duet</span>
+                            <figcaption>An overview of
+                                <span style="color: rgb(18, 150, 219);font-weight: bolder;">Robo</span><span
+                                    style="color: rgb(255, 111, 82);font-weight: bolder;">Duet</span>
                             </figcaption>
                         </figure>
                     </div>
@@ -255,31 +258,83 @@
     <section class="section">
         <div class="container">
             <div class="columns is-centered has-text-centered">
-                <div class="column has-text-centered " >
+                <div class="column has-text-centered ">
                     <!--       <div class="column is-two-thirds"> -->
                     <h2 class="title is-2">Experiments</h2>
+                    <hr class="custom-hr">
+                    
+                    
+                    <h3 class="title is-3">Whole body control</h3>
+                    <div class="column is-full-width is-centered has-text-centered">
+                        <video controls loop muted playsinline src="./resources/video/wbc.mp4" poster="./resources/wbc.png"
+                            style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%; width: 70%">
+                        </video>
+                    </div>
+                    <br>
+
+
+                    <h3 class="title is-3">6-DoF End-effector Pose Tracking</h3>
+                    Waiting for the video to be uploaded...
                     <br>
                     <br>
                     <br>
-                    <br>
-                    <h3 class="title is-3">6-DoF End-effector Tracking</h3>
+
+
+                    <h3 class="title is-3">Discrete Commands Following</h3>
 
                     <video controls autoplay loop muted playsinline src="./resources/video/trajectory.mp4"
-                        poster="./resources/second.png"
-                        style=" margin: 1.0%; width: 100%">
+                        poster="./resources/second.png" style=" margin: 1.0%; width: 100%">
                     </video>
-                        <!-- <figure style="display: inline-block; max-width: 95%;">
+                    <br>
+
+
+                    <h3 class="title is-3">Mobile Manipulation</h3>
+                    Waiting for the video to be uploaded...
+
+                    <br>
+                    <br>
+                    <br>
+
+
+                    <h3 class="title is-3">Cross-Embodiment</h3>
+                    Waiting for the video to be uploaded...
+                    <br>
+                    <br>
+                    <br>
+
+
+                    
+                    <!-- <figure style="display: inline-block; max-width: 95%;">
                             <img src="resources/second.png" alt="Pipeline Image" style="max-width: 100%;">
                             <figcaption>
                                 An overview of 
                                 <span style="color: rgb(18, 150, 219);font-weight: bolder;">Robo</span><span style="color: rgb(255, 111, 82);font-weight: bolder;">Duet</span>
                             </figcaption>
                         </figure> -->
-                    </div>
                 </div>
             </div>
         </div>
+        </div>
     </section>
+
+    <section class="section" id="BibTeX">
+        <div class="container content">
+            <h2 class="titile">BibTeX</h2>
+            <pre><code>
+                
+            </code></pre>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="content has-text-centered">
+                <p>Page template borrowed from <a href="https://lei-kun.github.io/uni-o4/"><span
+                            class="dnerf">Uni-O4</span></a> and <a href="https://nerfies.github.io/"><span
+                            class="dnerf">Nerfies</span></a>.</p>
+            </div>
+        </div>
+    </footer>
 
 </body>
 
