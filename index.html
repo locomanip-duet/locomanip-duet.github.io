@@ -56,7 +56,7 @@
                 </div>
             </div>
         </div>
-        <img src="resources/titlebg.png" alt="" class="no-margin" style="max-width: 100%;">
+        <img src="resources/images/titlebg.png" alt="" class="no-margin" style="max-width: 100%;">
 
         <br>
 
@@ -216,7 +216,7 @@
             <!-- Abstract. -->
             <div class="columns is-centered has-text-centered">
                 <div class="column is-three-quarters">
-                    <h2 class="title is-2">Abstract</h2>
+                    <h2 class="title is-2" style="text-align: center;">Abstract</h2>
                     <div class="content has-text-justified">
                         <p>
                             Combining the mobility of legged robots with the manipulation skills of arms has the
@@ -246,7 +246,7 @@
 
     <!-- demo video -->
     <div class="column is-full-width is-centered has-text-centered">
-        <video controls loop muted playsinline src="./resources/video/v3origin.mp4" poster="./resources/video1.png"
+        <video controls loop muted playsinline src="./resources/video/v3origin.mp4" poster="./resources/images/title.jpg"
             style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%; width: 70%">
         </video>
     </div>
@@ -256,19 +256,19 @@
         <div class="container">
             <!-- Abstract. -->
             <div class="columns is-centered has-text-centered">
-                <div class="column has-text-centered ">
+                <div class="column has-text-centered is-three-quarters">
                     <!--       <div class="column is-two-thirds"> -->
-                    <h2 class="title is-2">Method</h2>
+                    <h2 class="title is-2" style="text-align: center;">Method</h2>
                     <div class="content has-text-justified">
                         <p>
-
                             <b>Cooperative policy for whole-body control.</b> RoboDuet consists of a loco policy for
                             locomotion and an
                             arm policy for manipulation. The two policies are harmonized
                             as a whole-body controller. Specifically, the loco policy
                             adjusts its actions accordingly by following instructions from
-                            the arm policy. The goal of the loco policy \( \pi_{loco} \) is to follow a
-                            target command \(\mathbf{c_t} \). The goal of the arm policy \( \pi_{arm} \) is to
+                            the arm policy. The goal of the <span style="color: rgb(18, 150, 219);font-weight: bolder;">loco policy</span> \( \pi_{loco} \) is to follow a
+                            target command \(\mathbf{c_t} \). The goal of the <span
+                            style="color: rgb(255, 111, 82);font-weight: bolder;">arm policy</span> \( \pi_{arm} \) is to
                             accurately track the 6-DoF pose. The actions of the arm policy consist of two parts: the
                             first six actions \(a^{arm^J}_t \in \mathbb{R}^6\) represent the target joint position
                             offsets corresponding to six arm joint actuators. The rest part of the arm policy \(
@@ -276,6 +276,16 @@
                             providing additional degrees of freedom for end-effector tracking to cooperate with the loco
                             policy.
                         </p>
+                        <div style="text-align: center;">
+                            <figure style="display: inline-block; max-width: 100%;">
+                                <img src="resources/images/overview.jpg" alt="Pipeline Image" style="max-width: 100%;">
+                                <figcaption style="font-weight: bold;">An overview of
+                                    <span style="color: rgb(18, 150, 219);font-weight: bolder;">Robo</span><span
+                                        style="color: rgb(255, 111, 82);font-weight: bolder;">Duet</span>
+                                </figcaption>
+                            </figure>
+                        </div>
+                        <br>
                         <p>
                             <b>Two stage training.</b> In order to achieve both robust locomotion ability and flexible
                             manipulation ability, we adopted a two-stage training strategy. Stage 1 focuses on obtaining
@@ -285,56 +295,159 @@
                             all the robotic arm joints.
                         </p>
                     </div>
-                    <div style="text-align: center;">
-                        <figure style="display: inline-block; max-width: 75%;">
-                            <img src="resources/frameworkee.png" alt="Pipeline Image" style="max-width: 100%;">
-                            <figcaption>An overview of
-                                <span style="color: rgb(18, 150, 219);font-weight: bolder;">Robo</span><span
-                                    style="color: rgb(255, 111, 82);font-weight: bolder;">Duet</span>
-                            </figcaption>
-                        </figure>
-                    </div>
+                    
                 </div>
             </div>
         </div>
     </section>
 
     <!-- experiment -->
+    <!-- <section class="section">
+        <div class="container">
+            <h2 class="title is-2" style="text-align: center;">Sim Experiments</h2>
+            <div class="columns is-centered ">
+                <div class="column has-text-centered is-three-quarters">
+                    <h3 class="title is-3">Ablations</h3>
+                    <div class="content has-text-justified is">
+                        <p>
+                            To validate the significance of the two-stage training and the cooperative policy, which are key components of RoboDuet, We conduct sufficient ablation experiments by comparing with Baseline, Two-Stage and Cooperated. Metrics of various training methods are shown below (scaled by \( 10^{-2} \)). Setup details for these algorithms can be found in our paper.We established a series of metrics, including (1) <strong>Velocity Tracking Error</strong> for \( v_x, v_y, \omega_{yaw} \), (2) <strong>Position Tracking Error</strong> for \( l, p, y \) and Euclidean distance \( D \), (3) <strong>Orientation Tracking Error</strong> for \( \alpha, \beta, \gamma \) and quaternion geodesic distance \( \zeta \), (4) <strong>Survival Rate</strong>, (5) <strong>Solvability</strong>, (6) <strong>Workspace</strong>. More details can be found in our paper.
+
+                        </p>
+                        <img src="resources/images/table.png" alt="Baselines and Metrics" style="max-width: 100%;">
+                        <p>
+                            In summary, by effectively integrating cooperative policy and two-stage training, <span
+                                style="color: rgb(18, 150, 219);font-weight: bolder;">Robo</span><span
+                                style="color: rgb(255, 111, 82);font-weight: bolder;">Duet</span> significantly enhances control performance in both tracking accuracy and gait stability, underscoring the essential role of these components.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
     <section class="section">
         <div class="container">
-            <div class="columns is-centered has-text-centered">
-                <div class="column has-text-centered ">
-                    <!--       <div class="column is-two-thirds"> -->
-                    <h2 class="title is-2">Experiments</h2>
-                    
-                    <!-- <hr class="custom-hr"> -->
+            <h2 class="title is-2" style="text-align: center;">Real Experiments</h2>
+           
 
-                    <h3 class="title is-3">Baselines and Metrics</h3>
+            <h3 class="title is-3" style="text-align: center;">Whole body control</h3>
+            <div class="columns is-centered has-text-centered">
+                <div class="column has-text-centered is-three-quarters">
                     <div class="content has-text-justified">
                         <p>
-                            To validate the significance of the two-stage training and the cooperative policy, which are key components of RoboDuet, we establish a Baseline algorithm training a unified policy in one-stage. The Two-Stage algorithm modifies this baseline by transitioning from one-stage to two-stage training, while the Cooperated algorithm builds on the baseline by replacing the unified policy with a cooperative policy. RoboDuet itself incorporates both two-stage training and cooperative policy. Training details for these algorithms can be found in our paper. Metrics of various training methods are shown below (scaled by \( 10^{-2} \)). The initial three categories measure mean errors in robot velocity and end-effector position/orientation. The fourth assesses the robot's survival rate against external forces, and the fifth evaluates the robot workspace. "Still" tests occur with \( vel_x \) and \( \omega_z \) at zero, while "Move" tests are within command range limits.
+                            Given a series of challenging target poses, <span
+                                style="color: rgb(18, 150, 219);font-weight: bolder;">Robo</span><span
+                                style="color: rgb(255, 111, 82);font-weight: bolder;">Duet</span> enables the legged robot to respond rapidly to the arm’s guide, adjusting body posture to coordinate and maximize proximity to the target. This demonstrates robust whole-body control capabilities.
                         </p>
-                        <img src="resources/metrics.jpeg" alt="Baselines and Metrics" style="max-width: 100%;">
                     </div>
+                </div>
+            </div>
+            <div class="columns is-centered ">
+                <div class="column is-full-width is-centered has-text-centered">
+                    <video controls loop muted playsinline autoplay src="./resources/video/old_wbc.mp4" poster="./resources/images/loading-icon.gif"
+                        style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;">
+                    </video>
+                </div>
+                <div class="column is-full-width is-centered has-text-centered">
+                    <video controls loop muted playsinline autoplay src="./resources/video/extreme.mp4" poster="./resources/images/loading-icon.gif"
+                        style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;">
+                    </video>
+                </div>
+            </div>
 
-                    <div class="exp-margin"></div>
+            <div class="exp-margin"></div>
 
-                    <h3 class="title is-3">Whole body control</h3>
-                    <div class="column is-full-width is-centered has-text-centered">
-                        <video controls loop muted playsinline src="./resources/video/wbc.mp4" poster="./resources/wbc.png"
-                            style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%; width: 70%">
-                        </video>
+            <h3 class="title is-3" style="text-align: center;">Mobile Manipulation</h3>
+            <div class="columns is-centered is-three-quarters">
+                <img src="resources/images/mm.jpg" alt="Mobile Manipulation" style="max-width: 100%;">
+            </div>
+            <div class="columns is-centered has-text-centered">
+                <div class="column has-text-centered is-three-quarters">
+                    <div class="content has-text-justified">
+                        <p>
+                            To demonstrate the robot’s mobile manipulation capabilities, we tasked the robot with transporting objects across different heights, specifically targeting four representative levels: <b>ground (0 cm), chair (20 cm), cabinet (60 cm), and standing desk (100 cm)</b>. Results indicate that <span
+                                style="color: rgb(18, 150, 219);font-weight: bolder;">Robo</span><span
+                                style="color: rgb(255, 111, 82);font-weight: bolder;">Duet</span> effectively utilizes whole-body control to accomplish these mobile manipulation tasks
+                        </p>
                     </div>
-                    <br>
+                </div>
+            </div>
+            <div class="columns is-centered ">
+                <div class="column is-full-width is-centered has-text-centered">
+                    <h5 class="title is-4" style="text-align: center;">Ground</h5>
+                    <video controls autoplay loop muted playsinline src="./resources/video/1_2x.mp4"
+                        poster="./resources/images/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;">
+                    </video>
+                </div>
+                <div class="column is-full-width is-centered has-text-centered">
+                    <h5 class="title is-4" style="text-align: center;">Chair</h5>
+                    <video controls autoplay loop muted playsinline src="./resources/video/2_2x.mp4"
+                        poster="./resources/images/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;">
+                    </video>
+                </div>
+            </div>
+            <div class="columns is-centered ">
+                <div class="column is-full-width is-centered has-text-centered">
+                    <h5 class="title is-4" style="text-align: center;">Cabinet</h5>
+                    <video controls autoplay loop muted playsinline src="./resources/video/3_2x.mp4"
+                        poster="./resources/images/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;">
+                    </video>
+                </div>
+                <div class="column is-full-width is-centered has-text-centered">
+                    <h5 class="title is-4" style="text-align: center;">Standing Desk</h5>
+                    <video controls autoplay loop muted playsinline src="./resources/video/4_2x.mp4"
+                        poster="./resources/images/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;">
+                    </video>
+                </div>
 
-                    <div class="exp-margin"></div>
-                    
+            </div>
 
+            <div class="exp-margin"></div>
 
-                    <h3 class="title is-3">Discrete Commands Following</h3>
+            <h3 class="title is-3" style="text-align: center;">Cross-Embodiment</h3>
+            <div class="columns is-centered has-text-centered">
+                <div class="column has-text-centered is-three-quarters">
+                    <div class="content has-text-justified">
+                        <p>
+                            To evaluate the zero-shot transferability across different quadruped robots, <b>we directly deployed policies trained on the Go1+ARX5 configuration onto the Go2+ARX5, which has a 41.6% increase in base's weight.</b> Using VR device to send identical target poses to both systems, results demonstrate that both configurations effectively exhibit agile 6D pose tracking and robust whole-body control capabilities.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="columns is-centered ">
+                <div class="column is-full-width is-centered has-text-centered">
+                    <video controls autoplay loop muted playsinline src="./resources/video/from09_up_s.mp4"
+                        poster="./resources/images/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;">
+                    </video>
+                </div>
+                <div class="column is-full-width is-centered has-text-centered">
+                    <video controls autoplay loop muted playsinline src="./resources/video/from09_down_s.mp4"
+                        poster="./resources/images/loading-icon.gif" style="border: 1px solid #bbb; border-radius: 10px; margin: 1.0%;">
+                    </video>
+                </div>
+            </div>
 
+            <div class="exp-margin"></div>
+
+            <h3 class="title is-3" style="text-align: center;">Discrete Commands Following</h3>
+            <div class="columns is-centered has-text-centered">
+                <div class="column has-text-centered is-three-quarters">
+                    <div class="content has-text-justified">
+                        <p>
+                            Furthermore, by providing a series of discrete target poses during the quadruped robot’s movement, the system effectively adapts its posture to each target while maintaining stable locomotion throughout the whole process.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="columns is-centered ">
+                <div class="column is-full-width is-centered has-text-centered">
                     <video controls autoplay loop muted playsinline src="./resources/video/trajectory.mp4"
-                        poster="./resources/second.png" style=" margin: 1.0%; width: 100%">
+                        poster="./resources/images/loading-icon.gif" style=" margin: 1.0%;">
+                    </video>
+                </div>
+            </div>
+                    <!-- <video controls autoplay loop muted playsinline src="./resources/video/trajectory.mp4"
+                        poster="./resources/images/loading-icon.gif" style=" margin: 1.0%; width: 100%">
                     </video>
 
                     <div class="exp-margin"></div>
@@ -345,7 +458,7 @@
 
                     <br>
                     <br>
-                    <br>
+                    <br> -->
                     <!-- <h3 class="title is-3">6-DoF End-effector Pose Tracking</h3> -->
                     <!-- Waiting for the video to be uploaded... -->
                     <!-- <br>
@@ -375,9 +488,6 @@
                                 <span style="color: rgb(18, 150, 219);font-weight: bolder;">Robo</span><span style="color: rgb(255, 111, 82);font-weight: bolder;">Duet</span>
                             </figcaption>
                         </figure> -->
-                </div>
-            </div>
-        </div>
         </div>
     </section>
 
