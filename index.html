@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="RoboDuet: Learning a Cooperative Policy for Whole-body Legged Loco-Manipulation">
+    <meta name="keywords" content="Mobile Manipulation, Legged Robot, Whole body Control, 6-DoF Tracking">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>RoboDuet: Learning a Cooperative Policy for Whole-body Legged Loco-Manipulation</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"
+        async></script>
+        
+        <link rel="icon" href="./logo.png">
+    <meta property="og:site_name" content="RoboDuet: Learning a Cooperative Policy for Whole-body Legged Loco-Manipulation" />
+</head>
+
+
+<body>
+    <section class="hero">
+        
+
+        <!-- Title -->
+        <div class="hero-body">
+            <div class="container">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <h1 class="title is-1 publication-title">
+                            <span style="color: rgb(18, 150, 219);font-weight: bolder;">Robo</span><span
+                                style="color: rgb(255, 111, 82);font-weight: bolder;">Duet</span>: Learning a Cooperative Policy for Whole-body Legged Loco-Manipulation</span>
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <img src="resources/images/titlebg.png" alt="" class="no-margin" style="max-width: 100%;">
+
+        <br>
+
+        <!-- Authors -->
+        <div class="hero-body">
+            <div class="container">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <div class="is-size-4 publication-authors">
+                            <span class="author-block">
+                                <a href="https://guopingpan.github.io/">Guoping
+                                    Pan</a><sup>* 1,4</sup>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="https://www.qingweiben.com/">Qingwei
+                                    Ben</a><sup>* 1,3</sup>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="https://gemcollector.github.io/">Zhecheng
+                                    Yuan</a><sup>1,2</sup>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="https://lucca-cherries.github.io/">Guangqi
+                                    Jiang</a><sup>5</sup>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            </span>
+                        </div>
+
+                        <div class="is-size-4 publication-authors">
+                            <span class="author-block">
+                                <a href="https://www.shoujie.top/">Shoujie Li
+                                    Ji</a><sup>1</sup>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="https://yandongji.github.io/">Yandong
+                                    Ji</a><sup>5</sup>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="https://oceanpang.github.io/">Jiangmiao
+                                    Pang</a><sup>3</sup>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="https://www.sigs.tsinghua.edu.cn/lhd_en/main.htm">Houde
+                                    Liu</a><sup>1,4</sup>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="http://hxu.rocks/">Huazhe
+                                    Xu</a><sup>1,2,3</sup>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <br>
+                                
+
+                                <!-- <div>
+                                    <img src="./resources/thu.png" alt="Tsinghua University Logo"
+                                        style="vertical-align: middle; width: 60px; height: auto;">
+                                </div> -->
+
+
+                                <!-- <span style="color: rgb(124, 43, 136);font-weight: bolder;">Tsinghua University</span> -->
+                                
+                                
+                                <span style="font-size: 18px;"><sup>1</sup> Tsinghua University </span>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <span style="font-size: 18px;"><sup>2</sup> Shanghai Qi Zhi Institute </span>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <span style="font-size: 18px;"><sup>3</sup> Shanghai AI Lab </span>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <span style="font-size: 18px;"><sup>4</sup> Jianghuai Advance Technology Center </span>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <span style="font-size: 18px;"><sup>5</sup> UC San Diego </span>
+                                <br>
+                                <span style="font-size: 18px;"><sup>*</sup> Equal conttribution </span>
+                                <!-- <span class="brmod">CoRL 2022 (Oral)</span> -->
+                                <!-- <span><b style="color:rgb(255, 100, 100);">Best Systems Paper Award Finalist (top 0.79%)</b></span> -->
+
+                            </span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Links -->
+        <div class="center-table">
+            <span class="link-block">
+
+                <!-- Youtube -->
+                <!-- <a href="https://www.youtube.com/watch?v=xxx" class="external-link button is-normal is-rounded is-success">
+                    <span class="icon" disable>
+                    <svg style="color: white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                        <path d="M508.5 156.7c0 0-4.8-33.9-19.5-48.8-18.1-18.8-38.3-18.9-47.6-20C399.4 86 256 86 256 86s-143.4 0-185.4 1.9c-9.3 1.1-29.5 1.2-47.6 20-14.7 14.9-19.5 48.8-19.5 48.8S0 200 0 243.3v25.4c0 43.3 4.5 86.6 4.5 86.6s4.8 33.9 19.5 48.8c18.1 18.8 41.9 18.3 52.5 20.3 38.1 3.6 161.5 1.9 161.5 1.9s143.5 0.1 185.5-1.8c9.3-1.1 29.5-1.2 47.6-20 14.7-14.9 19.5-48.8 19.5-48.8s4.5-43.3 4.5-86.6v-25.4c0-43.3-4.5-86.6-4.5-86.6zM204.2 331.8V180.2l142.3 75.8-142.3 75.8z" fill="white"></path>
+                    </svg>
+                    </span>
+                    <span>YouTube</span>
+                </a>               -->
+
+                <!-- bilibili -->
+                <!-- <a href="https://www.bilibili.com/video/xxx/" class="external-link button is-normal is-rounded is-success">
+                    <span class="icon" disable>
+                        <svg style="color: white" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 512 512">
+                            <path
+                                d="M488.6 104.1C505.3 122.2 513 143.8 511.9 169.8V372.2C511.5 398.6 502.7 420.3 485.4 437.3C468.2 454.3 446.3 463.2 419.9 464H92.02C65.57 463.2 43.81 454.2 26.74 436.8C9.682 419.4 .7667 396.5 0 368.2V169.8C.7667 143.8 9.682 122.2 26.74 104.1C43.81 87.75 65.57 78.77 92.02 78H121.4L96.05 52.19C90.3 46.46 87.42 39.19 87.42 30.4C87.42 21.6 90.3 14.34 96.05 8.603C101.8 2.868 109.1 0 117.9 0C126.7 0 134 2.868 139.8 8.603L213.1 78H301.1L375.6 8.603C381.7 2.868 389.2 0 398 0C406.8 0 414.1 2.868 419.9 8.603C425.6 14.34 428.5 21.6 428.5 30.4C428.5 39.19 425.6 46.46 419.9 52.19L394.6 78L423.9 78C450.3 78.77 471.9 87.75 488.6 104.1H488.6zM449.8 173.8C449.4 164.2 446.1 156.4 439.1 150.3C433.9 144.2 425.1 140.9 416.4 140.5H96.05C86.46 140.9 78.6 144.2 72.47 150.3C66.33 156.4 63.07 164.2 62.69 173.8V368.2C62.69 377.4 65.95 385.2 72.47 391.7C78.99 398.2 86.85 401.5 96.05 401.5H416.4C425.6 401.5 433.4 398.2 439.7 391.7C446 385.2 449.4 377.4 449.8 368.2L449.8 173.8zM185.5 216.5C191.8 222.8 195.2 230.6 195.6 239.7V273C195.2 282.2 191.9 289.9 185.8 296.2C179.6 302.5 171.8 305.7 162.2 305.7C152.6 305.7 144.7 302.5 138.6 296.2C132.5 289.9 129.2 282.2 128.8 273V239.7C129.2 230.6 132.6 222.8 138.9 216.5C145.2 210.2 152.1 206.9 162.2 206.5C171.4 206.9 179.2 210.2 185.5 216.5H185.5zM377 216.5C383.3 222.8 386.7 230.6 387.1 239.7V273C386.7 282.2 383.4 289.9 377.3 296.2C371.2 302.5 363.3 305.7 353.7 305.7C344.1 305.7 336.3 302.5 330.1 296.2C323.1 289.9 320.7 282.2 320.4 273V239.7C320.7 230.6 324.1 222.8 330.4 216.5C336.7 210.2 344.5 206.9 353.7 206.5C362.9 206.9 370.7 210.2 377 216.5H377z"
+                                fill="white"></path>
+                        </svg> </span>
+                    <span>Bilibili</span>
+                </a> -->
+
+                <!-- arXiv Link. -->
+                <!-- <span class="link-block">
+                    <a href="https://arxiv.org/abs/2403.17367" class="external-link button is-normal is-rounded is-success">
+                        <span class="icon">
+                            <i class="ai ai-arxiv"></i>
+                        </span>
+                        <span>arXiv</span>
+                    </a>
+                </span> -->
+
+                <!-- PDF Link. -->
+                <span class="link-block">
+                    <a href="./RoboDuet.pdf" class="external-link button is-normal is-rounded is-success">
+                        <span class="icon">
+                            <i class="fas fa-file-pdf"></i>
+                        </span>
+                        <span>Paper</span>
+                    </a>
+                </span>
+
+                <!-- Poster. -->
+                <!-- <span class="link-block">
+                    <a href="./RoboDuet_poster.pdf" class="external-link button is-normal is-rounded is-success">
+                        <span class="icon">
+                            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"	 viewBox="0 0 428.108 428.108" style="enable-background:new 0 0 428.108 428.108;" xml:space="preserve"><path fill="currentColor" id="XMLID_1137_" d="M236.503,387.867c0,3.866-3.134,7-7,7h-30.898c-3.866,0-7-3.134-7-7s3.134-7,7-7h30.898	C233.369,380.867,236.503,384,236.503,387.867z M314.878,144.35c0,12.285-4.131,23.625-11.076,32.702	c7.079,13.78,11.076,29.392,11.076,45.92c0,55.595-45.229,100.825-100.825,100.825c-55.595,0-100.825-45.23-100.825-100.825	c0-54.853,44.028-99.615,98.601-100.802c8.473-18.695,27.312-31.733,49.137-31.733C290.693,90.437,314.878,114.623,314.878,144.35z	 M221.054,144.35c0,22.008,17.904,39.913,39.912,39.913c9.671,0,18.551-3.458,25.466-9.202	c-14.213-21.399-37.658-36.167-64.602-38.569C221.32,139.033,221.054,141.661,221.054,144.35z M300.878,222.972	c0-12.638-2.715-24.655-7.591-35.498c-9.012,6.772-20.206,10.789-32.321,10.789c-29.728,0-53.913-24.186-53.913-53.913	c0-2.707,0.201-5.368,0.588-7.97c-44.893,3.293-80.413,40.872-80.413,86.592c0,47.876,38.949,86.825,86.825,86.825	S300.878,270.848,300.878,222.972z M300.878,144.35c0-22.008-17.904-39.913-39.912-39.913c-14.163,0-26.628,7.417-33.714,18.569	c28.1,3.689,52.593,18.996,68.486,40.923C299.01,158.141,300.878,151.46,300.878,144.35z M252.177,355.057h-76.244	c-3.866,0-7,3.134-7,7s3.134,7,7,7h76.244c3.866,0,7-3.134,7-7S256.043,355.057,252.177,355.057z M379.295,49.957v371.151	c0,3.866-3.134,7-7,7H55.813c-3.866,0-7-3.134-7-7V49.957c0-3.866,3.134-7,7-7h68.925l86.236-42.243	c1.943-0.951,4.216-0.951,6.159,0l86.236,42.243h68.925C376.161,42.957,379.295,46.09,379.295,49.957z M156.563,42.957h114.983	l-57.492-28.162L156.563,42.957z M365.295,56.957h-63.404c-0.098,0.003-0.196,0.003-0.296,0H126.514	c-0.099,0.002-0.198,0.002-0.296,0H62.813v357.151h302.482V56.957z"/><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>                    </span>
+                          <span>Poster</span>
+                    </a>
+                </span> -->
+
+                <!-- Code Link. -->
+                <span class="link-block">
+                    <a href="https://github.com/locomanip-duet/RoboDuet" class="external-link button is-normal is-rounded is-success">
+                        <span class="icon">
+                            <svg class="svg-inline--fa fa-github fa-w-16" aria-hidden="true" focusable="false"
+                                data-prefix="fab" data-icon="github" role="img" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 496 512" data-fa-i2svg="">
+                                <path fill="currentColor"
+                                    d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z">
+                                </path>
+                            </svg>
+                        </span>
+                        <span>Code</span>
+                    </a>
+                </span>
+        </div>
+        
+    </section>
+
+
+    <!-- <section class="section">
+        <div class="container">
+            <div class="columns is-centered has-text-centered">
+                <h5 class="title is-5">
+                    <span><b style="color:rgb(245, 63, 63);">ICRA 2024 Loco-Manipulation Workshop</b></span>
+                </h5>
+            </div>
+        </div>
+    <br> -->
+
+    <!-- abstract -->
+    <section class="section">
+        <div class="container">
+            <!-- Abstract. -->
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-three-quarters">
+                    <h2 class="title is-2" style="text-align: center;">Abstract</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            Fully leveraging the mobile manipulation capabilities of a quadruped robot equipped with a robotic arm is non-trivial, as it requires controlling all degrees of freedom (DoFs) of the quadruped robot to achieve effective whole-body coordination. In this letter, we propose a novel framework <span
+                            style="color: rgb(18, 150, 219);font-weight: bolder;">Robo</span><span
+                            style="color: rgb(255, 111, 82);font-weight: bolder;">Duet</span>, which employs two collaborative policies to realize locomotion and manipulation simultaneously, achieving whole-body control through mutual interactions. Beyond enabling large-range 6D pose tracking for manipulation, we find that the two-policy framework supports zero-shot transfer across quadruped robots with similar morphology and dimensions in the real world. Our experiments demonstrate that <span
+                            style="color: rgb(18, 150, 219);font-weight: bolder;">Robo</span><span
+                            style="color: rgb(255, 111, 82);font-weight: bolder;">Duet</span> achieves a <b>23%</b> improvement in success rate over the baseline in challenging loco-manipulation tasks employing whole-body control.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- demo video -->
+    <section class="section">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-three-quarters">
+                    <iframe 
+                        src="https://www.youtube.com/embed/pTjqUUVgt7k?autoplay=1&vq=hd1080" 
+                        frameborder="0" 
+                        title="RoboDuet: Learning a Cooperative Policy for Whole-body Legged Loco-Manipulation"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen
+                        style="width: 100%; aspect-ratio: 16/9;">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <div class="exp-margin"></div>
+
+
+    <!-- method -->
+    <section class="section">
+        <div class="container">
+            <!-- Abstract. -->
+            <div class="columns is-centered has-text-centered">
+                <div class="column has-text-centered is-three-quarters">
+                    <!--       <div class="column is-two-thirds"> -->
+                    <h2 class="title is-2" style="text-align: center;">Method</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            <b>Cooperative policy for whole-body control.</b> RoboDuet consists of a loco policy for
+                            locomotion and an
+                            arm policy for manipulation. The two policies are harmonized
+                            as a whole-body controller. Specifically, the loco policy
+                            adjusts its actions accordingly by following instructions from
+                            the arm policy. The goal of the <span style="color: rgb(18, 150, 219);font-weight: bolder;">loco policy</span> \( \pi_{loco} \) is to follow a
+                            target command \(\mathbf{c_t} \). The goal of the <span
+                            style="color: rgb(255, 111, 82);font-weight: bolder;">arm policy</span> \( \pi_{arm} \) is to
+                            accurately track the 6-DoF pose. The actions of the arm policy consist of two parts: the
+                            first six actions \(a^{arm^J}_t \in \mathbb{R}^6\) represent the target joint position
+                            offsets corresponding to six arm joint actuators. The rest part of the arm policy \(
+                            a_t^{arm^G} \) is used to replace orientation commands,
+                            providing additional degrees of freedom for end-effector tracking to cooperate with the loco
+                            policy.
+                        </p>
+                        <div style="text-align: center;">
+                            <figure style="display: inline-block; max-width: 100%;">
+                                <img src="resources/images/overview.jpg" alt="Pipeline Image" style="max-width: 100%;">
+                                <figcaption style="font-weight: bold;">An overview of
+                                    <span style="color: rgb(18, 150, 219);font-weight: bolder;">Robo</span><span
+                                        style="color: rgb(255, 111, 82);font-weight: bolder;">Duet</span>
+                                </figcaption>
+                            </figure>
+                        </div>
+                        <br>
+                        <p>
+                            <b>Two stage training.</b> In order to achieve both robust locomotion ability and flexible
+                            manipulation ability, we adopted a two-stage training strategy. Stage 1 focuses on obtaining
+                            the robust locomotion capability, which design is inspired by the powerful blind locomotion
+                            algorithm. Stage 2 aims to coordinate locomotion and manipulation to achieve whole-body
+                            large-range mobile manipulation, when the arm policy will be activated simultaneously with
+                            all the robotic arm joints.
+                        </p>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            
+            <!-- real-world experiments -->
+            <h2 class="title is-2" style="text-align: center;">Real Experiments</h2>
+           
+            <!-- whole-body control -->
+            <h3 class="title is-3" style="text-align: center;">Whole body control</h3>
+            <div class="columns is-centered has-text-centered">
+                <div class="column has-text-centered is-three-quarters">
+                    <div class="content has-text-justified">
+                        <p>
+                            Given a series of challenging target poses, <span
+                                style="color: rgb(18, 150, 219);font-weight: bolder;">Robo</span><span
+                                style="color: rgb(255, 111, 82);font-weight: bolder;">Duet</span> enables the legged robot to respond rapidly to the arm's guide, adjusting body posture to coordinate and maximize proximity to the target. This demonstrates robust whole-body control capabilities.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="columns is-centered ">
+                <div class="column is-full-width is-centered has-text-centered">
+                    <iframe src="https://www.youtube.com/embed/AnweiT1u6c4?autoplay=1&loop=1&playlist=AnweiT1u6c4&mute=1&vq=hd1080" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
+                    title="WBC-1"
+                    style="width: 100%; aspect-ratio: 16/9;"></iframe>
+                </div>
+                <div class="column is-full-width is-centered has-text-centered">
+                    <iframe src="https://www.youtube.com/embed/bhsYlHC8lq8?autoplay=1&loop=1&playlist=bhsYlHC8lq8&mute=1&vq=hd1080" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
+                    title="WBC-2"
+                    style="width: 100%; aspect-ratio: 16/9;"></iframe>
+                </div>
+                <div class="column is-full-width is-centered has-text-centered">
+                    <iframe src="https://www.youtube.com/embed/8p_e65g5D0Q?autoplay=1&loop=1&playlist=8p_e65g5D0Q&mute=1&vq=hd1080" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
+                    title="Mocap"
+                    style="width: 100%; aspect-ratio: 16/9;"></iframe>
+                </div>
+            </div>
+
+            <div class="exp-margin"></div>
+            
+            <!-- terrain -->
+            <h3 class="title is-3" style="text-align: center;">Traversing complex terrain</h3>
+            <div class="columns is-centered has-text-centered">
+                <div class="column has-text-centered is-three-quarters">
+                    <div class="content has-text-justified">
+                        <p>
+                            In the case of maintaining the manipulator's target pose, <span style="color: rgb(18, 150, 219);font-weight: bolder;">Robo</span><span style="color: rgb(255, 111, 82);font-weight: bolder;">Duet</span>  is capable of traversing slopes, gravel, and other complex terrains, and even enables backward traversal of such terrains.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="columns is-centered ">
+                <div class="column is-full-width is-centered has-text-centered">
+                    <iframe src="https://www.youtube.com/embed/TfQZoPCQkxg?autoplay=1&loop=1&playlist=TfQZoPCQkxg&mute=1&vq=hd1080" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
+                    style="width: 100%; aspect-ratio: 16/9;"></iframe>
+                </div>
+                <div class="column is-full-width is-centered has-text-centered">
+                    <iframe src="https://www.youtube.com/embed/NfJRP62vNqE?autoplay=1&loop=1&playlist=NfJRP62vNqE&mute=1&vq=hd1080" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
+                    style="width: 100%; aspect-ratio: 16/9;"></iframe>
+                </div>
+                <div class="column is-full-width is-centered has-text-centered">
+                    <iframe src="https://www.youtube.com/embed/IpkwceCI8Hg?autoplay=1&loop=1&playlist=IpkwceCI8Hg&mute=1&vq=hd1080" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
+                    style="width: 100%; aspect-ratio: 16/9;"></iframe>
+                </div>
+            </div>
+
+            <div class="exp-margin"></div>
+
+            <!-- door opening -->
+            <h3 class="title is-3" style="text-align: center;">Door Opening</h3>
+            <div class="columns is-centered has-text-centered">
+                <div class="column has-text-centered is-three-quarters">
+                    <div class="content has-text-justified">
+                        <p>
+                            We demonstrate the capability of <span style="color: rgb(18, 150, 219);font-weight: bolder;">Robo</span><span style="color: rgb(255, 111, 82);font-weight: bolder;">Duet</span> to perform manipulation during locomotion through the door opening task, where the door handle height is <b>100 cm</b>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="columns is-centered ">
+                <div class="column is-full-width is-centered has-text-centered">
+                    <iframe src="https://www.youtube.com/embed/xKdVBK2v-Xw?autoplay=1&loop=1&playlist=xKdVBK2v-Xw&mute=1&vq=hd1080" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
+                    style="width: 100%; aspect-ratio: 16/9;"></iframe>
+                </div>
+                <div class="column is-full-width is-centered has-text-centered">
+                    <iframe src="https://www.youtube.com/embed/RpZLncZFdcw?autoplay=1&loop=1&playlist=RpZLncZFdcw&mute=1&vq=hd1080" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
+                    style="width: 100%; aspect-ratio: 16/9;"></iframe>
+                </div>
+                <div class="column is-full-width is-centered has-text-centered">
+                    <iframe src="https://www.youtube.com/embed/SEnGBIzxYHA?autoplay=1&loop=1&playlist=SEnGBIzxYHA&mute=1&vq=hd1080" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
+                    style="width: 100%; aspect-ratio: 16/9;"></iframe>
+                </div>
+            </div>
+
+            <div class="exp-margin"></div>
+
+            <h3 class="title is-3" style="text-align: center;">Robustness</h3>
+            <div class="columns is-centered ">
+                <div class="column is-centered has-text-centered is-half">
+                    <iframe src="https://www.youtube.com/embed/2cS2ZwcQK1g?autoplay=1&loop=1&playlist=2cS2ZwcQK1g&mute=1&vq=hd1080" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
+                    style="width: 100%; aspect-ratio: 16/9;"></iframe>
+                </div>
+            </div>
+
+
+            <div class="exp-margin"></div>
+
+            <!-- Mobile Manipulation -->
+            <h3 class="title is-3" style="text-align: center;">Mobile Manipulation</h3>
+            <div class="columns is-centered has-text-centered">
+                <div class="column has-text-centered is-three-quarters">
+                    <div class="content has-text-justified">
+                        <img src="resources/images/mm.jpg" alt="Mobile Manipulation" style="max-width: 100%;">
+                   
+                        <p>
+                            To demonstrate the robot's mobile manipulation capabilities, we tasked the robot with transporting objects across different heights, specifically targeting four representative levels: <b>ground (0 cm), chair (20 cm), cabinet (60 cm), and standing desk (100 cm)</b>. Results indicate that <span
+                                style="color: rgb(18, 150, 219);font-weight: bolder;">Robo</span><span
+                                style="color: rgb(255, 111, 82);font-weight: bolder;">Duet</span> effectively utilizes whole-body control to accomplish these mobile manipulation tasks
+                        </p>
+                    </div>
+                </div>
+            </div>
+         
+            <div class="columns is-centered ">
+                <div class="column is-full-width is-centered has-text-centered">
+                    <h5 class="title is-4" style="text-align: center;">Ground</h5>
+                    <iframe src="https://www.youtube.com/embed/Sm1MZrV-Ows?autoplay=1&loop=1&playlist=Sm1MZrV-Ows&mute=1&vq=hd1080" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
+                    style="width: 100%; aspect-ratio: 16/9;"></iframe>
+                </div>
+                <div class="column is-full-width is-centered has-text-centered">
+                    <h5 class="title is-4" style="text-align: center;">Chair</h5>
+                    <iframe src="https://www.youtube.com/embed/OI6p1REs6xY?autoplay=1&loop=1&playlist=OI6p1REs6xY&mute=1&vq=hd1080" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
+                    style="width: 100%; aspect-ratio: 16/9;"></iframe>
+                </div>
+            </div>
+
+            <div class="columns is-centered ">
+                <div class="column is-full-width is-centered has-text-centered">
+                    <h5 class="title is-4" style="text-align: center;">Cabinet</h5>
+                    <iframe src="https://www.youtube.com/embed/lDQrnE5_5ZE?autoplay=1&loop=1&playlist=lDQrnE5_5ZE&mute=1&vq=hd1080" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
+                    style="width: 100%; aspect-ratio: 16/9;"></iframe>
+                </div>
+                <div class="column is-full-width is-centered has-text-centered">
+                    <h5 class="title is-4" style="text-align: center;">Standing Desk</h5>
+                    <iframe src="https://www.youtube.com/embed/ANWqGYL5ukA?autoplay=1&loop=1&playlist=ANWqGYL5ukA&mute=1&vq=hd1080" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
+                    style="width: 100%; aspect-ratio: 16/9;"></iframe>
+                </div>
+            </div>
+
+            <!-- comparison -->
+            <h3 class="title is-4" style="text-align: center;">Comparison</h3>
+            <div class="columns is-centered has-text-centered">
+                <div class="column has-text-centered is-two-thirds">
+                    <div class="content has-text-justified">
+                        <p>
+                            <span style="color: rgb(18, 150, 219);font-weight: bolder;">Robo</span><span
+                                style="color: rgb(255, 111, 82);font-weight: bolder;">Duet</span> achieves a <b>23%</b> improvement in success rate for more challenging mobile manipulation tasks compared to an adaptive floating base + inverse dynamics (AFB+ID) controller baseline.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="columns is-centered">
+                <div class="column is-two-thirds">
+                    <iframe 
+                        src="https://www.youtube.com/embed/tRmAwPMMvAU?autoplay=1&loop=1&playlist=tRmAwPMMvAU&mute=1&vq=hd1080" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen
+                        style="width: 100%; aspect-ratio: 16/9;">
+                    </iframe>
+                </div>
+            </div>
+
+
+            <div class="exp-margin"></div>
+
+            <h3 class="title is-3" style="text-align: center;">Zero-shot Transfer</h3>
+            <div class="columns is-centered has-text-centered">
+                <div class="column has-text-centered is-three-quarters">
+                    <div class="content has-text-justified">
+                        <p>
+                            To evaluate the zero-shot transferability across different quadruped robots, <b>we directly deployed policies trained on the Go1+ARX5 configuration onto the Go2+ARX5, which has a 14.7% increase in base's weight.</b> Using VR device to send identical target poses to both systems, results demonstrate that both configurations effectively exhibit agile 6D pose tracking and robust whole-body control capabilities.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- zero-shot transfer -->
+            <div class="columns is-centered ">
+                <div class="column is-full-width is-centered has-text-centered">
+                    <iframe src="https://www.youtube.com/embed/Z-ygOEYmolg?autoplay=1&loop=1&playlist=Z-ygOEYmolg&mute=1&vq=hd1080" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
+                    style="width: 100%; aspect-ratio: 16/9;"></iframe>
+                </div>
+                <div class="column is-full-width is-centered has-text-centered">
+                    <iframe src="https://www.youtube.com/embed/wWb2oV-Hrt4?autoplay=1&loop=1&playlist=wWb2oV-Hrt4&mute=1&vq=hd1080" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
+                    style="width: 100%; aspect-ratio: 16/9;"></iframe>
+                </div>
+            </div>
+
+            <div class="exp-margin"></div>
+
+            <!-- More interesting cases -->
+            <h3 class="title is-3" style="text-align: center;">More interesting cases</h3>
+            <div class="columns is-centered ">
+                <div class="column is-full-width is-centered has-text-centered">
+                    <iframe src="https://www.youtube.com/embed/aYMAK6_1MgM?autoplay=1&loop=1&playlist=aYMAK6_1MgM&mute=1&vq=hd1080" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
+                    style="width: 100%; aspect-ratio: 16/9;"></iframe>
+                    <p>
+                        Whole-body control allows the robot to wield the hammer with greater striking force.
+                    </p>
+                </div>
+                <div class="column is-full-width is-centered has-text-centered">
+                    <iframe src="https://www.youtube.com/embed/qsESXAv_rlg?autoplay=1&loop=1&playlist=qsESXAv_rlg&mute=1&vq=hd1080" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
+                    style="width: 100%; aspect-ratio: 16/9;"></iframe>
+                    <p>
+                        Agile 6D pose manipulation enables the robot to regrasp dropped objects.
+                    </p>
+                </div>
+                
+            </div>
+            <div class="columns is-centered ">
+                <div class="column is-full-width is-centered has-text-centered">
+                    <iframe src="https://www.youtube.com/embed/WBWnMPA1vmI?autoplay=1&loop=1&playlist=WBWnMPA1vmI&mute=1&vq=hd1080" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
+                    style="width: 100%; aspect-ratio: 16/9;"></iframe>
+                </div>
+                <div class="column is-full-width is-centered has-text-centered">
+                    <iframe src="https://www.youtube.com/embed/h6oqEKyEy54?autoplay=1&loop=1&playlist=h6oqEKyEy54&mute=1&vq=hd1080" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
+                    style="width: 100%; aspect-ratio: 16/9;"></iframe>
+                </div>
+
+            </div>
+        
+            <div class="columns is-centered ">
+                <div class="column has-text-centered is-three-quarters">
+                    <div class="content has-text-centered ">
+                        Capable of simultaneous locomotion and manipulation, enabling relay tasks.
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="exp-margin"></div>
+
+            <h3 class="title is-3" style="text-align: center;">Discrete Commands Following</h3>
+            <div class="columns is-centered has-text-centered">
+                <div class="column has-text-centered is-three-quarters">
+                    <div class="content has-text-justified">
+                        <p>
+                            Furthermore, by providing a series of discrete target poses during the quadruped robot's movement, the system effectively adapts its posture to each target while maintaining stable locomotion throughout the whole process.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="columns is-centered ">
+                <div class="column is-full-width is-centered has-text-centered">
+                    <video controls autoplay loop muted playsinline src="resources/videos/trajectory.mp4"
+                        poster="./resources/images/loading-icon.gif" style=" margin: 1.0%;">
+                    </video>
+                </div>
+            </div>
+            
+
+            <!-- Discrete Commands Following -->
+            <!-- <div class="columns is-centered ">
+                <div class="column is-full-width is-centered has-text-centered">
+                    <iframe src="https://www.youtube.com/embed/qMfw5nIhwsA?autoplay=1&vq=hd1080" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div> -->
+
+
+                    <!-- <video controls autoplay loop muted playsinline src="https://github.com/locomanip-duet/locomanip-duet.github.io/releases/download/demo/trajectory.mp4"
+                        poster="./resources/images/loading-icon.gif" style=" margin: 1.0%; width: 100%">
+                    </video>
+
+                    <div class="exp-margin"></div>
+
+
+                    <hr class="custom-hr">
+                    <h3 class="title is-3" style="color: grey; font-style: italic;">More videos are coming soon...</h3>
+
+                    <br>
+                    <br>
+                    <br> -->
+                    <!-- <h3 class="title is-3">6-DoF End-effector Pose Tracking</h3> -->
+                    <!-- Waiting for the video to be uploaded... -->
+                    <!-- <br>
+                    <br>
+                    <br>
+                    
+                    <h3 class="title is-3">Mobile Manipulation</h3>
+                    Waiting for the video to be uploaded...
+
+                    <br>
+                    <br>
+                    <br>
+
+
+                    <h3 class="title is-3">Cross-Embodiment</h3>
+                    Waiting for the video to be uploaded...
+                    <br>
+                    <br>
+                    <br> -->
+
+
+                    
+                    <!-- <figure style="display: inline-block; max-width: 95%;">
+                            <img src="resources/second.png" alt="Pipeline Image" style="max-width: 100%;">
+                            <figcaption>
+                                An overview of 
+                                <span style="color: rgb(18, 150, 219);font-weight: bolder;">Robo</span><span style="color: rgb(255, 111, 82);font-weight: bolder;">Duet</span>
+                            </figcaption>
+                        </figure> -->
+        </div>
+    </section>
+
+    <section class="section" id="BibTeX">
+        <div class="container content">
+            <h2 class="titile">BibTeX</h2>
+            <pre><code>@misc{pan2024roboduetwholebodyleggedlocomanipulation,
+                title={RoboDuet: Learning a Cooperative Policy for Whole-body Legged Loco-Manipulation}, 
+                author={Guoping Pan and Qingwei Ben and Zhecheng Yuan and Guangqi Jiang and Yandong Ji and Shoujie Li and Jiangmiao Pang and Houde Liu and Huazhe Xu},
+                year={2024},
+                eprint={2403.17367},
+                archivePrefix={arXiv},
+                primaryClass={cs.RO},
+                url={https://arxiv.org/abs/2403.17367}, 
+          }</code></pre>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="content has-text-centered">
+                <p>Page template borrowed from <a href="https://lei-kun.github.io/uni-o4/"><span
+                            class="dnerf">Uni-O4</span></a> and <a href="https://nerfies.github.io/"><span
+                            class="dnerf">Nerfies</span></a>.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
